@@ -1,28 +1,34 @@
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 
 public class heizung {
 
-	ArrayList<observer> Personen = new ArrayList<>();
+	Map<observer, Integer> t = new HashMap<observer, Integer>(); 
+	int value;
 	
-	public void setValue(int value) {
-		notifyAllObserver(value);
+	public void setValue(int v) {
+		value = v;
+		notifyAllObserver();
 	}
 	
-	public void notifyAllObserver(int v) {
-			for(int i = 0; i < Personen.size(); i++) {
-				Personen.get(i).update(v);
+	public void notifyAllObserver() {
+			for(Entry<observer, Integer> e : t.entrySet()) {
+				if(e.getValue() < value) {
+					e.getKey().update(value);
+				}
 			}
 		
 	}
 	
-	public void register(observer o) {
-		if(!Personen.contains(o)) {
-			Personen.add(o);
+	public void register(observer o, int temp) {
+		if(!t.containsKey(o)) {
+			t.put(o, temp);
 		}
 	}
 	
 	public void unRegister(observer o) {
-			Personen.remove(o);
+			t.remove(o);
 	}
 	
 	public static void main(String[] args) {
