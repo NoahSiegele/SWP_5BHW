@@ -1,0 +1,7 @@
+
+ERROR
+INFO
+ERROR
+INFO
+DEBUG
+Warning
