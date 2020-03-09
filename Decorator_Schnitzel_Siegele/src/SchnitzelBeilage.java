@@ -1,7 +1,6 @@
 
 public class SchnitzelBeilage extends SchnitzelDekorierer {
 	private Beilagen b;
-	double p;
 	
 	public SchnitzelBeilage(Schnitzelwirt s, Beilagen b) {
 		super(s);
